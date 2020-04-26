@@ -77,6 +77,29 @@ height (Node _ l r) = 1 + max (height l) (height r)
 -- right, or forms a straight line. Define a Direction data type that lets you represent
 -- these possibilities.
 
+data Point2d = Point2d Double Double
 
+data Direction = TurnLeft | TurnRight | StraightLine deriving Show
 
+-- Write a function that calculates the turn made by three two-dimensional points
+-- and returns a Direction .
+
+turn :: Point2d -> Point2d -> Point2d -> Direction
+turn a b c = TurnLeft
+-- TODO
+
+-- Define a function that takes a list of two-dimensional points and computes the
+-- direction of each successive triple. Given a list of points [a,b,c,d,e] , it should
+-- begin by computing the turn made by [a,b,c] , then the turn made by [b,c,d] ,
+-- then [c,d,e] . Your function should return a list of Direction .
+
+-- TODO
+
+-- Using the code from the preceding three exercises, implement Graham’s scan al-
+-- gorithm for the convex hull of a set of 2D points. You can find good description
+-- of what a convex hull (http://en.wikipedia.org/wiki/Convex_hull) is, and how the
+-- Graham scan algorithm (http://en.wikipedia.org/wiki/Graham_scan) should work,
+-- on Wikipedia (http://en.wikipedia.org/).
+
+-- TODO
 
