@@ -49,9 +49,16 @@ sort xs = mergsort xs
                             merge [] ys = ys
                             merge l@(x:xs) r@(y:ys) = if (length x) < (length y) then x:(merge xs r) else y:(merge l ys)
 
+-- Define a function that joins a list of lists together using a separator value:
+-- ghci> intersperse ',' ["foo","bar","baz","quux"]
+-- "foo,bar,baz,quux"
 
+intersperse :: a -> [[a]] -> [a]
 
-
+intersperse sep [] = []
+intersperse sep [x] = x
+intersperse sep [x, y] = x ++ [sep] ++ y
+intersperse sep (x:xs) = x ++ [sep] ++ (intersperse sep xs)
 
 
 
