@@ -32,6 +32,27 @@ ispalindrome xs = let l = length xs
                       ys = take (div l 2) xs
                   in xs == palindrome ys
 
+-- Create a function that sorts a list of lists based on the length of each sublist. (You
+-- may want to look at the sortBy function from the Data.List module.)
+
+sort :: [[a]] -> [[a]]
+sort xs = mergsort xs
+    where mergsort :: [[a]] -> [[a]]
+          mergsort [x] = [x]
+          mergsort [x, y] = if (length x) < (length y) then [x, y] else [y, x]
+          mergsort xs = let i = div (length xs) 2
+                            l = mergsort (take i xs)
+                            r = mergsort (drop i xs)
+                        in merge l r where
+                            merge :: [[a]] -> [[a]] -> [[a]]
+                            merge xs [] = xs
+                            merge [] ys = ys
+                            merge l@(x:xs) r@(y:ys) = if (length x) < (length y) then x:(merge xs r) else y:(merge l ys)
+
+
+
+
+
 
 
 
