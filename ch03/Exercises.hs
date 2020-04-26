@@ -25,6 +25,12 @@ palindrome xs = xs ++ (revers xs [])
     where revers [] acc = acc
           revers (y:ys) acc = revers ys (y:acc)
 
+-- Write a function that determines whether its input list is a palindrome.
+
+ispalindrome :: Eq a => [a] -> Bool
+ispalindrome xs = let l = length xs
+                      ys = take (div l 2) xs
+                  in xs == palindrome ys
 
 
 
