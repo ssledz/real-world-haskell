@@ -36,6 +36,10 @@ splitWith f xs = foldr g [[]] xs
 -- Framework” on page 71, write a program that prints the first word of each line of
 -- its input.
 
+firstWord :: String -> String
+firstWord line = headOpt $ words line
+    where headOpt [] = []
+          headOpt xs = head xs
 
 
 -- Write a program that transposes the text in a file. For instance, it should convert
