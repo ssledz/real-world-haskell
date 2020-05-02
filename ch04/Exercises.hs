@@ -1,4 +1,7 @@
+import Data.Char
+
 -- ch04/84
+-- Working with Lists
 
 -- Write your own “safe” definitions of the standard partial list functions, but make
 -- sure they never fail. As a hint, you might want to consider using the following types
@@ -44,6 +47,26 @@ splitWith f xs = foldr g [[]] xs
 -- "hello\nworld\n" to "hw\neo\nlr\nll\nod\n" .
 
 -- file: TransposeText.hs
+
+
+-- ch04/97
+-- How to Think About Loops
+
+-- Use a fold (choosing the appropriate fold will make your code much simpler) to
+-- rewrite and improve upon the asInt function from the earlier section“Explicit Re-
+-- cursion” on page 85.
+
+asInt :: String -> Int
+asInt [] = 0
+asInt xs = foldl f 0 xs
+    where f :: Int -> Char -> Int
+          f acc x = 10 * acc + digitToInt x
+            where digitToInt x = ord x - ord '0'
+
+
+
+
+
 
 
 
