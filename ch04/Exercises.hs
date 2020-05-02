@@ -1,3 +1,5 @@
+-- ch04/84
+
 -- Write your own “safe” definitions of the standard partial list functions, but make
 -- sure they never fail. As a hint, you might want to consider using the following types
 --
@@ -36,16 +38,12 @@ splitWith f xs = foldr g [[]] xs
 -- Framework” on page 71, write a program that prints the first word of each line of
 -- its input.
 
-firstWord :: String -> String
-firstWord line = headOpt $ words line
-    where headOpt [] = []
-          headOpt xs = head xs
-
+-- file: FirstWord.hs
 
 -- Write a program that transposes the text in a file. For instance, it should convert
 -- "hello\nworld\n" to "hw\neo\nlr\nll\nod\n" .
 
-
+-- file: TransposeText.hs
 
 
 
