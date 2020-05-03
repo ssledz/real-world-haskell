@@ -140,14 +140,25 @@ groupBy' p xs = foldr f [] xs
     where f x [] = [[x]]
           f x (ys@(y:_):zs) = if p x y then (x:ys):zs else [x]:ys:zs
 
+-- How many of the following Prelude functions can you rewrite using list folds?
+-- • any
+-- • cycle
+-- • words
+-- • unlines
+-- For those functions where you can use either foldl' or foldr , which is more ap-
+-- propriate in each case?
+
+any' :: (a -> Bool) -> [a] -> Bool       -- more appropriate is foldr because of its short circuit nature
+any' p xs = foldr f False xs
+    where f x acc = if p x then True else acc
 
 
+words' :: String -> [String]
+words' xs = case foldr f ("",[]) xs of
+                ("", ys) -> ys
+                (acc, ys) -> acc:ys
+    where f x (acc, ys) = if isSpace x then ("", acc:ys) else (x:acc, ys)
 
-
-
-
-
-
-
-
+unlines' :: [String] -> String
+unlines' xs = foldr (\x acc -> x ++ '\n':acc) "" xs
 
