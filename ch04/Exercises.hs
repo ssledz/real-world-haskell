@@ -116,6 +116,26 @@ asInt_either ys@(x:xs) = case x of
 -- concat :: [[a]] -> [a]
 -- Write your own definition of concat using foldr .
 
+concat' :: [[a]] -> [a]
+concat' xs = foldr (++) [] xs
+
+-- Write your own definition of the standard takeWhile function, first using explicit
+-- recursion, and then foldr .
+
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' _ [] = []
+takeWhile' p (x:xs) = if p x then x:(takeWhile' p xs) else []
+
+
+
+
+
+
+
+
+
+
+
 
 
 
