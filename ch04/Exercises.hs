@@ -127,10 +127,18 @@ takeWhile' _ [] = []
 takeWhile' p (x:xs) = if p x then x:(takeWhile' p xs) else []
 
 
+takeWhile'' :: (a -> Bool) -> [a] -> [a]
+takeWhile'' p  xs = foldr (\x acc -> if p x then x:acc else []) [] xs
 
+-- The Data.List module defines a function, groupBy , which has the following type:
+-- groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+-- Use ghci to load the Data.List module and figure out what groupBy does, then
+-- write your own implementation using a fold.
 
-
-
+groupBy' :: (a -> a -> Bool) -> [a] -> [[a]]
+groupBy' p xs = foldr f [] xs
+    where f x [] = [[x]]
+          f x (ys@(y:_):zs) = if p x y then (x:ys):zs else [x]:ys:zs
 
 
 
